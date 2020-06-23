@@ -1,0 +1,47 @@
+<?php
+
+namespace Kanboard\Plugin\CleanView;
+
+use Kanboard\Core\Plugin\Base;
+use Kanboard\Core\Translator;
+
+class Plugin extends Base
+{
+    public function initialize()
+    {
+	    $this->template->setTemplateOverride('board/task_footer', 'cleanview:board/task_footer');
+	    $this->template->setTemplateOverride('board/task_private', 'cleanview:board/task_private');
+	    $this->template->setTemplateOverride('task/dropdown', 'cleanview:task/dropdown');
+    }
+
+    public function onStartup()
+    {
+        Translator::load($this->languageModel->getCurrentLanguage(), __DIR__.'/Locale');
+    }
+
+    public function getPluginName()
+    {
+        return 'Clean View';
+    }
+
+    public function getPluginDescription()
+    {
+        return t('A clean kanboard web interface that works for me');
+    }
+
+    public function getPluginAuthor()
+    {
+        return 'Giovanni Cherubin';
+    }
+
+    public function getPluginVersion()
+    {
+        return '1.0.0';
+    }
+
+    public function getPluginHomepage()
+    {
+        return 'none';
+    }
+}
+
