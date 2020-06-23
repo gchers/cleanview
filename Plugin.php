@@ -9,9 +9,9 @@ class Plugin extends Base
 {
     public function initialize()
     {
-	    $this->template->setTemplateOverride('board/task_footer', 'cleanview:board/task_footer');
-	    $this->template->setTemplateOverride('board/task_private', 'cleanview:board/task_private');
-	    $this->template->setTemplateOverride('task/dropdown', 'cleanview:task/dropdown');
+	    $this->template->setTemplateOverride('board/task_footer', 'CleanView:board/task_footer');
+	    $this->template->setTemplateOverride('board/task_private', 'CleanView:board/task_private');
+	    $this->template->setTemplateOverride('task/dropdown', 'CleanView:task/dropdown');
     }
 
     public function onStartup()
@@ -21,7 +21,7 @@ class Plugin extends Base
 
     public function getPluginName()
     {
-        return 'Clean View';
+        return 'CleanView';
     }
 
     public function getPluginDescription()
