@@ -1,13 +1,30 @@
 Clean View
 ==============================
 
-A clean kanboard interface that works for me
+A clean kanboard template that works well for me.
 
-Author
-------
+Features:
 
-- Giovanni Cherubin
-- License MIT
+- Shows subtasks menu in collapsed view
+- In expanded view, subtasks are shown within the task containers
+- Some decluttering to make the interface cleaner and more useful (for my needs)
+
+I use this for my personal kanboard installation. Use at your own risk.
+
+**iOS users** you can get your kanboard installation to behave like a
+progressive web app (i.e., more or less like a native app)
+for your iThing by adding the following line to the
+`index.php` in your installation:
+
+```
+<meta name="apple-mobile-web-app-capable" content="yes">
+```
+
+then add your kanboard home page to your iThing's home screen.
+
+If you know of a better way -- which there probably is, please
+get in touch:)
+
 
 Requirements
 ------------
@@ -25,7 +42,9 @@ You have the choice between 3 methods:
 
 Note: Plugin folder is case-sensitive.
 
-Documentation
--------------
 
-TODO.
+Author
+------
+
+- Giovanni Cherubin
+- License MIT
