@@ -47,7 +47,7 @@
                 <?php endif ?>
 
                 <?php if (! empty($task['nb_subtasks'])): ?>
-                    <?= $this->app->tooltipLink('<i class="fa fa-bars fa-fw"></i>'.round($task['nb_completed_subtasks'] / $task['nb_subtasks'] * 100, 0).'%', $this->url->href('BoardTooltipController', 'subtasks', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
+		    <?= round($task['nb_completed_subtasks'] / $task['nb_subtasks'] * 100, 0).'%' ?>
                 <?php endif ?>
 
                 <?php if (! empty($task['owner_id'])): ?>
@@ -56,20 +56,36 @@
                     </span>
                 <?php endif ?>
 
+            <?= $this->hook->render('template:board:private:task:before-title', array('task' => $task)) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
+
                 <?= $this->render('board/task_avatar', array('task' => $task)) ?>
             </div>
 
-            <?= $this->hook->render('template:board:private:task:before-title', array('task' => $task)) ?>
-            <div class="task-board-title">
-                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
-            </div>
             <?= $this->hook->render('template:board:private:task:after-title', array('task' => $task)) ?>
+
+	    <?php if (! empty($task['nb_subtasks'])): ?>
+                <br>
+		<table class="table-small">
+		    <?php foreach ($this->hook->subtaskModel->getAll($task['id']) as $subtask): ?>
+			<tr>
+			    <td>
+				<?= $this->subtask->renderToggleStatus($task, $subtask) ?>
+				<?= $this->hook->render('template:board:tooltip:subtasks:rows', array('subtask' => $subtask)) ?>
+			    </td>
+			</tr>
+		    <?php endforeach ?>
+		</table>
+
+	    <?php endif ?>
 
             <?= $this->render('board/task_footer', array(
                 'task' => $task,
                 'not_editable' => $not_editable,
                 'project' => $project,
             )) ?>
+
+
         </div>
     <?php endif ?>
 </div>
