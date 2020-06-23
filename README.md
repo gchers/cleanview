@@ -16,7 +16,7 @@ progressive web app (i.e., more or less like a native app)
 for your iThing by adding the following line to the
 `index.php` in your installation:
 
-```
+```html
 <meta name="apple-mobile-web-app-capable" content="yes">
 ```
 
@@ -42,6 +42,12 @@ You have the choice between 3 methods:
 
 Note: Plugin folder is case-sensitive.
 
+Hacking
+-------
+
+This plugin overrides the template of kanboard 1.2.15.
+To see the changes from their code, diff the current master with
+commit `15ed4b6b7cc385dfe1ac26a374af91c374b87397`. 
 
 Author
 ------
