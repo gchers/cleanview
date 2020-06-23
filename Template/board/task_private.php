@@ -26,11 +26,11 @@
                 <strong><?= '#'.$task['id'] ?></strong>
             <?php endif ?>
 
-            <?php if (! empty($task['assignee_username'])): ?>
-                <span title="<?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>">
-                    <?= $this->text->e($this->user->getInitials($task['assignee_name'] ?: $task['assignee_username'])) ?>
-                </span> -
+            <?php if (! empty($task['nb_subtasks'])): ?>
+                <?= $this->app->tooltipLink('<i class="fa fa-bars fa-fw"></i>', $this->url->href('BoardTooltipController', 'subtasks', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
             <?php endif ?>
+
+
             <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', $this->text->e($task['title'])) ?>
         </div>
     <?php else: ?>
@@ -44,6 +44,10 @@
                     <?php endif ?>
                 <?php else: ?>
                     <strong><?= '#'.$task['id'] ?></strong>
+                <?php endif ?>
+
+                <?php if (! empty($task['nb_subtasks'])): ?>
+                    <?= $this->app->tooltipLink('<i class="fa fa-bars fa-fw"></i>'.round($task['nb_completed_subtasks'] / $task['nb_subtasks'] * 100, 0).'%', $this->url->href('BoardTooltipController', 'subtasks', array('task_id' => $task['id'], 'project_id' => $task['project_id']))) ?>
                 <?php endif ?>
 
                 <?php if (! empty($task['owner_id'])): ?>
