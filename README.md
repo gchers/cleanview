@@ -1,7 +1,7 @@
 Clean View
 ==============================
 
-A clean kanboard template that works well for me.
+A clean [kanboard](https://kanboard.org) template that works well for me.
 
 Features:
 
